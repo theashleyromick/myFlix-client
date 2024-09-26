@@ -8,7 +8,11 @@ export const MainView = () => {
 
   // Fetch movies from the Open Library API
   useEffect(() => {
+second-branch
     fetch("https://myflix-cf-2a89fc30fab2.herokuapp.com/movies")
+
+    fetch("https://myflix-cf-2a89fc30fab2.herokuapp.com/movies")
+ main
       .then((response) => response.json())
       .then((data) => {
         const moviesFromApi = data.docs.map((doc) => {
