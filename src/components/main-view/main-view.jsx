@@ -8,7 +8,7 @@ export const MainView = () => {
 
   // Fetch movies from the Open Library API
   useEffect(() => {
-    fetch("https://openlibrary.org/search.json?q=inception")
+    fetch("https://myflix-cf-2a89fc30fab2.herokuapp.com/movies")
       .then((response) => response.json())
       .then((data) => {
         const moviesFromApi = data.docs.map((doc) => {
