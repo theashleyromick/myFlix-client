@@ -8,22 +8,23 @@ export const MainView = () => {
 
   // Fetch movies from the Open Library API
   useEffect(() => {
-second-branch
-    fetch("https://myflix-cf-2a89fc30fab2.herokuapp.com/movies")
-
-    fetch("https://myflix-cf-2a89fc30fab2.herokuapp.com/movies")
- main
+    //try using localhost so you can see what is going wrong easier
+    //then once api is fixed we focus on using that
+    let local_api_url = "http://localhost:8080/movies"
+    let heroku_api_url = "https://myflix-cf-2a89fc30fab2.herokuapp.com/movies"
+    fetch(local_api_url)
       .then((response) => response.json())
       .then((data) => {
-        const moviesFromApi = data.docs.map((doc) => {
+        console.log("response data", data)//[]
+        const moviesFromApi = data.map((movie) => {
+          //transforming
           return {
-            id: doc.key, // Use the correct key from the API response
-            title: doc.title,
-            image: `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`,
-            author: doc.author_name?.[0] // Use optional chaining in case author_name is undefined
+            id: movie.key, // Use the correct key from the API response
+            title: movie.title,
+            image: `https://covers.openlibrary.org/b/id/${movie.cover_i}-L.jpg`,
+            author: movie.author_name?.[0] // Use optional chaining in case author_name is undefined
           };
         });
-
         setMovies(moviesFromApi); // Correct: Set the state for movies
       })
       .catch((error) => {
